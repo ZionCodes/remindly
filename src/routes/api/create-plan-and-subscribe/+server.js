@@ -44,7 +44,7 @@ export async function POST({ request }) {
             email,
             plan: planCode,
             amount: Math.round(amount * 100), // Ensure amount is included here
-            callback_url: 'http://localhost:5173/subscribe/callback' // Include your callback URL here
+            callback_url: 'http://localhost:5173/callback' // Include your callback URL here
         });
 
         const transactionOptions = {
