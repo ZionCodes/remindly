@@ -1,4 +1,4 @@
-import { error, fail } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 
 export const actions = {
     login: async ({ request, locals }) => {
@@ -13,6 +13,8 @@ export const actions = {
                     email: body.email
                 });
             }
+            // Successful login
+            return { success: true };
         } catch (err) {
             console.log('Error: ', err);
             if (err.status === 400) {
@@ -21,9 +23,7 @@ export const actions = {
                     email: body.email
                 });
             }
-            throw error(500, 'Something went wrong logging in');
+            return fail(500, { error: 'Something went wrong logging in' });
         }
-
-        return { success: true };
     }
 };

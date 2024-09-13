@@ -45,14 +45,6 @@
                             <span class="font-medium">Success:</span> Your account has been created. Please check your email for verification.
                         </p>
                     {/if}
-                    
-                    <!-- Debug information (only in development mode) -->
-                    {#if import.meta.env.DEV && form}
-                        <details>
-                            <summary class="text-sm text-gray-600 dark:text-gray-400 cursor-pointer">Debug Info</summary>
-                            <pre class="mt-2 text-xs text-gray-600 dark:text-gray-400 whitespace-pre-wrap">{JSON.stringify(form, null, 2)}</pre>
-                        </details>
-                    {/if}
 
                     <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" disabled={loading}>
                         {#if loading}

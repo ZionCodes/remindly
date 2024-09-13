@@ -1,4 +1,4 @@
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import PocketBase from 'pocketbase';
 import { SECRET_EMAIL, SECRET_PASSWORD } from '$env/static/private';
 
@@ -24,8 +24,13 @@ export const actions = {
                 name: 'free'
             });
 
-            return { success: true };
+            // Redirect to the login page after successful registration
+            throw redirect(303, '/login');
         } catch (err) {
+            if (err.status === 303) {
+                throw err; // Re-throw the redirect
+            }
+
             console.log('Error details:', JSON.stringify(err, null, 2)); // Log the full error
 
             // Extract the specific error message

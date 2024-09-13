@@ -1,5 +1,8 @@
 import PocketBase from 'pocketbase';
 import { serializeNonPOJOs } from '$lib/utils';
+import { setupCronJobs } from './cron.js';
+
+setupCronJobs();
 
 export const handle = async ({ event, resolve }) => {
 	event.locals.pb = new PocketBase('https://drove-rain.pockethost.io/');
